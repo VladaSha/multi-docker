@@ -14,6 +14,14 @@ after_success:
   - docker build -t vladasha256/multi-nginx ./nginx  
   - docker build -t vladasha256/multi-server ./server
   - docker build -t vladasha256/multi-worker ./worker
+  # Log in to the Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take the images and push them to Docker hub
+  - docker push vladasha256/multi-client
+  - docker push vladasha256/multi-nginx
+  - docker push vladasha256/multi-server
+  - docker push vladasha256/multi-worker
+
 
 
 
